@@ -13,7 +13,8 @@ exports.addSaleItems = (saleItemObj) => {
         ('${inventoryObj.product_id}','${inventoryObj.product_name}','${inventoryObj.total_quantity}','${inventoryObj.total_price}','${inventoryObj.created_date}')`)
     })
 }
-exports.searchProduct = () => {
-    return db.sequelize.query(`Delete from inventory where id=${id}`)
+exports.searchProduct = (product_name) => {
+    return db.sequelize.query(`select *from [dbo].[sale] where [product_name] like '%${product_name}%' `,{ type: Sequelize.QueryTypes.SELECT
+    });
 }
 

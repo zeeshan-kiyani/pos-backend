@@ -18,8 +18,17 @@ const addSaleItems = (req,res) => {
          return res.status(500,{error});
      }); 
 }
+const searchProduct = ( req, res ) => {
+    const product_name = req.params.product_name
+    return sqlSequelize.searchProduct(product_name).then((row) => {
+        return res.status(200).json(row);
+     }).catch(error =>{
+         return res.status(500,{error});
+     }); 
+}
 router.post('/getTotalSale', getTotalSale);
 router.post('/addSaleItems', addSaleItems);
+router.get('/searchProduct/:product_name', searchProduct);
 
 // router.put('/updateInventory/:id', updateInventory);
 // router.delete('/deleteInventory/:id', deleteInventory);
