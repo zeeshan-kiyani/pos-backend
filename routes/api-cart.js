@@ -13,6 +13,7 @@ const addSaleItems = (req,res) => {
     const saleItems = req.body.saleItems;
     // console.log(saleItems)
     return sqlSequelize.addSaleItems(saleItems).then((row) => {
+        console.log(row)
         return res.status(200).json({msg:'Inventory added successfully'});
      }).catch(error =>{
          return res.status(500,{error});
