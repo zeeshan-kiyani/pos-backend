@@ -12,9 +12,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 //enabling cross origin resource sharing i.e communication of different server
 app.use(cors());
+
 const apiInventory = require('./routes/api-inventory');
+const apiCart = require('./routes/api-cart');
 
 app.use('/inventory', apiInventory )
+app.use('/cart', apiCart )
 //for securing express app by adding headers
 app.get('/', function (req, res) {
   res.send('Hello World')
